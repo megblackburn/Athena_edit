@@ -1,0 +1,36 @@
+esystem_prim.o: esystem_prim.c ../copyright.h ../defs.h ../athena.h \
+ /dss/lrzsys/sys/spack/release/22.2.1/opt/x86_64/intel-oneapi-mpi/2021.7.0-gcc-4y4ywgv/mpi/2021.7.0/include/mpi.h \
+ /dss/lrzsys/sys/spack/release/22.2.1/opt/x86_64/intel-oneapi-mpi/2021.7.0-gcc-4y4ywgv/mpi/2021.7.0/include/mpio.h \
+ ../globals.h prototypes.h ../config.h ../prototypes.h ../gravity/prototypes.h \
+ ../integrators/prototypes.h ../microphysics/prototypes.h \
+ ../particles/prototypes.h ../rsolvers/prototypes.h
+lr_states_dc.o: lr_states_dc.c ../copyright.h ../defs.h ../athena.h \
+ /dss/lrzsys/sys/spack/release/22.2.1/opt/x86_64/intel-oneapi-mpi/2021.7.0-gcc-4y4ywgv/mpi/2021.7.0/include/mpi.h \
+ /dss/lrzsys/sys/spack/release/22.2.1/opt/x86_64/intel-oneapi-mpi/2021.7.0-gcc-4y4ywgv/mpi/2021.7.0/include/mpio.h \
+ prototypes.h ../config.h ../prototypes.h ../gravity/prototypes.h \
+ ../integrators/prototypes.h ../microphysics/prototypes.h \
+ ../particles/prototypes.h ../rsolvers/prototypes.h
+lr_states_plm.o: lr_states_plm.c ../copyright.h ../defs.h ../athena.h \
+ /dss/lrzsys/sys/spack/release/22.2.1/opt/x86_64/intel-oneapi-mpi/2021.7.0-gcc-4y4ywgv/mpi/2021.7.0/include/mpi.h \
+ /dss/lrzsys/sys/spack/release/22.2.1/opt/x86_64/intel-oneapi-mpi/2021.7.0-gcc-4y4ywgv/mpi/2021.7.0/include/mpio.h \
+ ../globals.h prototypes.h ../config.h ../prototypes.h ../gravity/prototypes.h \
+ ../integrators/prototypes.h ../microphysics/prototypes.h \
+ ../particles/prototypes.h ../rsolvers/prototypes.h
+lr_states_ppm.o: lr_states_ppm.c ../copyright.h ../defs.h ../athena.h \
+ /dss/lrzsys/sys/spack/release/22.2.1/opt/x86_64/intel-oneapi-mpi/2021.7.0-gcc-4y4ywgv/mpi/2021.7.0/include/mpi.h \
+ /dss/lrzsys/sys/spack/release/22.2.1/opt/x86_64/intel-oneapi-mpi/2021.7.0-gcc-4y4ywgv/mpi/2021.7.0/include/mpio.h \
+ ../globals.h prototypes.h ../config.h ../prototypes.h ../gravity/prototypes.h \
+ ../integrators/prototypes.h ../microphysics/prototypes.h \
+ ../particles/prototypes.h ../rsolvers/prototypes.h
+lr_states_prim2.o: lr_states_prim2.c ../copyright.h ../defs.h ../athena.h \
+ /dss/lrzsys/sys/spack/release/22.2.1/opt/x86_64/intel-oneapi-mpi/2021.7.0-gcc-4y4ywgv/mpi/2021.7.0/include/mpi.h \
+ /dss/lrzsys/sys/spack/release/22.2.1/opt/x86_64/intel-oneapi-mpi/2021.7.0-gcc-4y4ywgv/mpi/2021.7.0/include/mpio.h \
+ ../globals.h prototypes.h ../config.h ../prototypes.h ../gravity/prototypes.h \
+ ../integrators/prototypes.h ../microphysics/prototypes.h \
+ ../particles/prototypes.h ../rsolvers/prototypes.h
+lr_states_prim3.o: lr_states_prim3.c ../copyright.h ../defs.h ../athena.h \
+ /dss/lrzsys/sys/spack/release/22.2.1/opt/x86_64/intel-oneapi-mpi/2021.7.0-gcc-4y4ywgv/mpi/2021.7.0/include/mpi.h \
+ /dss/lrzsys/sys/spack/release/22.2.1/opt/x86_64/intel-oneapi-mpi/2021.7.0-gcc-4y4ywgv/mpi/2021.7.0/include/mpio.h \
+ ../globals.h prototypes.h ../config.h ../prototypes.h ../gravity/prototypes.h \
+ ../integrators/prototypes.h ../microphysics/prototypes.h \
+ ../particles/prototypes.h ../rsolvers/prototypes.h
