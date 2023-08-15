@@ -6,5 +6,6 @@ New files:
 - mls.c is current working problem
 - tcm3.c is the current townsend cooling function
 - error with the MPIallreduce within the frame_shift function
+- current input is tst/megKH/athinputmeg.kh
 
 Does not include the tst directory.
