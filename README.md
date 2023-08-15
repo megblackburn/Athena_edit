@@ -14,5 +14,6 @@ Work needed:
 - definitions of U[k][j][i]. need checked
 - upper and lower densities need added and assigned to U[k][j][i].d for different requirements - along with temperatures 
 - check pressure calculation
-- 
+- problem needs refined to specific TML requirements
+- set correct variables values
 
