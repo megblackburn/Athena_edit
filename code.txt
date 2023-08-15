@@ -1,0 +1,76 @@
+void Userwork_in_loop(DomainS *pD)
+{
+  GridS *pGrid = pD->Grid;
+  Real g;
+  g = par_getd("problem","gamma");
+  int i=0, j=0, k=0;
+  int is,ie,js,je,ks,ke;
+ //Real x1,x2,x3;
+  Real dt;
+
+  is = pGrid->is; ie = pGrid->ie;
+  js = pGrid->js; je = pGrid->je;
+  ks = pGrid->ks; ke = pGrid->ke;
+  for (k=ks; k<=ke; k++) {
+    for (j=js; j<=je; j++) {
+      for (i=is; i<=ie; i++) {
+        Real lum_cell = 0.0;
+        Real prs = amb_rho * T_floor * Kboltz/muH*mue;
+        Real temp = (prs/pGrid->U[k][j][i].d) * Kboltz * mu;
+        if (temp > T_floor) {
+          if (temp < T_cut) {
+            Real rho = pGrid->U[k][j][i].d;
+            Real temp_cgs = temp;
+            Real rho_cgs = rho * unit_density;
+            Real dt_cgs = dt*unit_time;
+            Real cLfac = Lambda_fac;
+
+            Real temp_new = fmax(Cooling_townsend(temp_cgs,rho_cgs,dt_cgs,cLfac),T_floor);
+            Real ccool_2 = ((temp_new-temp)/(Kboltz*mu))*pGrid->U[k][j][i].d/(g-1.0);
+            lum_cell -= ccool_2;
+          }
+        }
+        else{
+          Real ccool_2 = ((T_floor-temp)/(Kboltz*mu))*pGrid->U[k][j][i].d/(g-1.0);
+        }
+        return lum_cell/dt;
+      }
+    }
+  }
+}
+
+    static Real CONST_pc  = 3.086e18;
+    static Real CONST_yr  = 3.154e7;
+    static Real CONST_amu = 1.66053886e-24;
+    static Real CONST_kB  = 1.3806505e-16;
+    static Real unit_length = 3.086e18*1e3; // 1 kpc
+    static Real unit_time   = 3.154e7*1e6; // 1 Myr
+    static Real unit_density = 1.66053886e-24;   // 1 mp/cm-3
+
+    Real unit_velocity = unit_length/unit_time; // in kpc/Myr
+
+    static Real unit_q = (unit_density * pow(unit_velocity,3.0))/unit_length;
+
+    static Real Kboltz = unit_velocity*unit_velocity*CONST_amu/CONST_kB;
+
+// in terms of solar abundances
+    static Real Zsol = 1.0;
+    static Real Xsol = 1.0;
+
+    double X = Xsol * 0.7381;
+    double Z = Zsol * 0.0134;
+    double Y = 1 - X - Z;
+
+    double mu  = 1.0/(2.*X+ 3.*(1.-X-Z)/4.+ Z/2.);
+    double mue = 2.0/(1.0+X);
+    double muH = 1.0/X;
+
+// Relevant temperatures
+    double T_floor   = 1e4;   // in
+    double T_ceil    = 1e8;   // in K
+    double T_hot     = 1e7;
+    double T_hot_req = 1e7;
+    double T_cold    = 2*1e4;
+    double T_cut_mul = 0.6;
+    double T_cut     = T_cut_mul*T_hot_req;
+

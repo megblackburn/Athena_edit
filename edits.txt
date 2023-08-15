@@ -1,0 +1,17 @@
+07/08/23
+
+- have added a folder utils, with files hst_func.h, townsend_cooling_max.h, code_units.h
+- have added mixlayershift.c - c version with some edits - unsure if it will fully run
+- mix_layerShift.cpp is the cpp version
+
+- had to hard code all values in code_units
+- unit_q was an issue - doesnt seem to get used
+- havent got an hst_func 
+- MPI_ATHENA and MPI_allreduce are in mesh.cpp/init_mesh.c - need to add mpiallreduce with mpi_athena
+- Mesh: newtimestep??? first mentions MPI ath and allreduce
+- next section by Hitesh is large - try convert and add into init_mesh.c - MAKE A COPY 
+- apart from that it is compiling after changing MPI MACHINE in Makeoptions.in 
+
+
+./configure --with-problem=mls --enable-mpi
+

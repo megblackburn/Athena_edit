@@ -1,0 +1,488 @@
+In file included from ./utils/townsend_cooling_max.h:4:0,
+                 from mixlayershift.c:22:
+./utils/../ath_array.c:36:7: error: redefinition of ‘calloc_1d_array’
+ void* calloc_1d_array(size_t nc, size_t size)
+       ^~~~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:36:7: note: previous definition of ‘calloc_1d_array’ was here
+ void* calloc_1d_array(size_t nc, size_t size)
+       ^~~~~~~~~~~~~~~
+In file included from ./utils/townsend_cooling_max.h:4:0,
+                 from mixlayershift.c:22:
+./utils/../ath_array.c:51:8: error: redefinition of ‘calloc_2d_array’
+ void** calloc_2d_array(size_t nr, size_t nc, size_t size)
+        ^~~~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:51:8: note: previous definition of ‘calloc_2d_array’ was here
+ void** calloc_2d_array(size_t nr, size_t nc, size_t size)
+        ^~~~~~~~~~~~~~~
+In file included from ./utils/townsend_cooling_max.h:4:0,
+                 from mixlayershift.c:22:
+./utils/../ath_array.c:78:9: error: redefinition of ‘calloc_3d_array’
+ void*** calloc_3d_array(size_t nt, size_t nr, size_t nc, size_t size)
+         ^~~~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:78:9: note: previous definition of ‘calloc_3d_array’ was here
+ void*** calloc_3d_array(size_t nt, size_t nr, size_t nc, size_t size)
+         ^~~~~~~~~~~~~~~
+In file included from ./utils/townsend_cooling_max.h:4:0,
+                 from mixlayershift.c:22:
+./utils/../ath_array.c:125:6: error: redefinition of ‘free_1d_array’
+ void free_1d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:125:6: note: previous definition of ‘free_1d_array’ was here
+ void free_1d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from ./utils/townsend_cooling_max.h:4:0,
+                 from mixlayershift.c:22:
+./utils/../ath_array.c:133:6: error: redefinition of ‘free_2d_array’
+ void free_2d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:133:6: note: previous definition of ‘free_2d_array’ was here
+ void free_2d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from ./utils/townsend_cooling_max.h:4:0,
+                 from mixlayershift.c:22:
+./utils/../ath_array.c:144:6: error: redefinition of ‘free_3d_array’
+ void free_3d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:144:6: note: previous definition of ‘free_3d_array’ was here
+ void free_3d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from mixlayershift.c:22:0:
+./utils/townsend_cooling_max.h:16:118: error: expected ‘;’, ‘,’ or ‘)’ before ‘=’ token
+ void cooling_ctr(struct cooling* obj, Real tfloor, Real townsend(Real temp, Real rho, Real const dt, Real Lambda_fac = 1.0), Real Lambda(Real temp), Real tcool(Real temp, Real rho), Real const mh = 1.6605e-24, Real const kb = 1.380648e-16, int nbins, Real const_factor, calloc_1d_array<Real> cool_t, calloc_1d_array<Real> cool_tef, calloc_1d_array<Real> cool_coef, calloc_1d_array<Real> cool_index)
+                                                                                                                      ^
+./utils/townsend_cooling_max.h:16:126: error: expected ‘;’, ‘,’ or ‘)’ before ‘Real’
+ void cooling_ctr(struct cooling* obj, Real tfloor, Real townsend(Real temp, Real rho, Real const dt, Real Lambda_fac = 1.0), Real Lambda(Real temp), Real tcool(Real temp, Real rho), Real const mh = 1.6605e-24, Real const kb = 1.380648e-16, int nbins, Real const_factor, calloc_1d_array<Real> cool_t, calloc_1d_array<Real> cool_tef, calloc_1d_array<Real> cool_coef, calloc_1d_array<Real> cool_index)
+                                                                                                                              ^~~~
+In file included from mixlayershift.c:22:0:
+./utils/townsend_cooling_max.h:21:118: error: expected ‘;’, ‘,’ or ‘)’ before ‘=’ token
+ void cooling_ctr(struct cooling* obj, Real tfloor, Real townsend(Real temp, Real rho, Real const dt, Real Lambda_fac = 1.0), Real Lambda(Real temp), Real tcool(Real temp, Real rho), Real const mh = 1.6605e-24, Real const kb = 1.380648e-16, int nbins, Real const_factor, calloc_1d_array<Real> cool_t, calloc_1d_array<Real> cool_tef, calloc_1d_array<Real> cool_coef, calloc_1d_array<Real> cool_index){
+                                                                                                                      ^
+./utils/townsend_cooling_max.h:21:126: error: expected ‘;’, ‘,’ or ‘)’ before ‘Real’
+ void cooling_ctr(struct cooling* obj, Real tfloor, Real townsend(Real temp, Real rho, Real const dt, Real Lambda_fac = 1.0), Real Lambda(Real temp), Real tcool(Real temp, Real rho), Real const mh = 1.6605e-24, Real const kb = 1.380648e-16, int nbins, Real const_factor, calloc_1d_array<Real> cool_t, calloc_1d_array<Real> cool_tef, calloc_1d_array<Real> cool_coef, calloc_1d_array<Real> cool_index){
+                                                                                                                              ^~~~
+./utils/townsend_cooling_max.h: In function ‘cooling_dtr’:
+./utils/townsend_cooling_max.h:197:17: error: ‘cool_t’ undeclared (first use in this function); did you mean ‘cooling’?
+   free_1d_array(cool_t);
+                 ^~~~~~
+                 cooling
+./utils/townsend_cooling_max.h:197:17: note: each undeclared identifier is reported only once for each function it appears in
+./utils/townsend_cooling_max.h:198:17: error: ‘cool_tef’ undeclared (first use in this function); did you mean ‘cool_t’?
+   free_1d_array(cool_tef);
+                 ^~~~~~~~
+                 cool_t
+./utils/townsend_cooling_max.h:199:17: error: ‘cool_coef’ undeclared (first use in this function); did you mean ‘cool_tef’?
+   free_1d_array(cool_coef);
+                 ^~~~~~~~~
+                 cool_tef
+./utils/townsend_cooling_max.h:200:17: error: ‘cool_index’ undeclared (first use in this function); did you mean ‘cool_coef’?
+   free_1d_array(cool_index);
+                 ^~~~~~~~~~
+                 cool_coef
+./utils/townsend_cooling_max.h: In function ‘cooling_ctr’:
+./utils/townsend_cooling_max.h:227:17: warning: implicit declaration of function ‘cool_t’; did you mean ‘cosl’? [-Wimplicit-function-declaration]
+   Real t_n    = cool_t(nbins-1);
+                 ^~~~~~
+                 cosl
+./utils/townsend_cooling_max.h:227:24: error: ‘nbins’ undeclared (first use in this function)
+   Real t_n    = cool_t(nbins-1);
+                        ^~~~~
+./utils/townsend_cooling_max.h:228:17: warning: implicit declaration of function ‘cool_coef’ [-Wimplicit-function-declaration]
+   Real coef_n = cool_coef(nbins-1) * Lambda_fac;
+                 ^~~~~~~~~
+./utils/townsend_cooling_max.h:228:38: error: ‘Lambda_fac’ undeclared (first use in this function)
+   Real coef_n = cool_coef(nbins-1) * Lambda_fac;
+                                      ^~~~~~~~~~
+./utils/townsend_cooling_max.h:235:46: error: ‘temp’ undeclared (first use in this function); did you mean ‘bcmp’?
+   while ((idx < nbins-2) && (cool_t(idx+1) < temp)) { idx += 1; }
+                                              ^~~~
+                                              bcmp
+./utils/townsend_cooling_max.h:242:16: warning: implicit declaration of function ‘cool_tef’ [-Wimplicit-function-declaration]
+   Real tef_i = cool_tef(idx);
+                ^~~~~~~~
+./utils/townsend_cooling_max.h:244:16: warning: implicit declaration of function ‘cool_index’; did you mean ‘cooling_dtr’? [-Wimplicit-function-declaration]
+   Real slope = cool_index(idx);
+                ^~~~~~~~~~
+                cooling_dtr
+./utils/townsend_cooling_max.h:251:47: error: ‘std’ undeclared (first use in this function)
+   Real tef = tef_i + (coef_n/coef)*(t_i/t_n)*(std::pow(t_i/temp,sm1)-1)/sm1;
+                                               ^~~
+./utils/townsend_cooling_max.h:251:50: error: expected ‘)’ before ‘:’ token
+   Real tef = tef_i + (coef_n/coef)*(t_i/t_n)*(std::pow(t_i/temp,sm1)-1)/sm1;
+                                                  ^
+./utils/townsend_cooling_max.h:257:24: error: ‘rho’ undeclared (first use in this function)
+   Real tef_adj = tef + rho*coef_n*const_factor*dt/t_n;
+                        ^~~
+./utils/townsend_cooling_max.h:257:35: error: ‘const_factor’ undeclared (first use in this function)
+   Real tef_adj = tef + rho*coef_n*const_factor*dt/t_n;
+                                   ^~~~~~~~~~~~
+./utils/townsend_cooling_max.h:257:48: error: ‘dt’ undeclared (first use in this function)
+   Real tef_adj = tef + rho*coef_n*const_factor*dt/t_n;
+                                                ^~
+./utils/townsend_cooling_max.h:278:22: error: expected ‘,’ or ‘;’ before ‘:’ token
+   Real tnew = t_i*std::pow(1-oms*(coef/coef_n)*(t_n/t_i)*(tef_adj-tef_i),1/oms);
+                      ^
+./utils/townsend_cooling_max.h:285:10: warning: ‘return’ with a value, in function returning void
+   return tnew;
+          ^~~~
+./utils/townsend_cooling_max.h:209:6: note: declared here
+ void cooling_ctr(Real townsend(Real temp, Real rho, Real const dt, Real Lambda_fac))
+      ^~~~~~~~~~~
+./utils/townsend_cooling_max.h: At top level:
+./utils/townsend_cooling_max.h:292:6: error: conflicting types for ‘cooling_ctr’
+ void cooling_ctr(Real Lambda(Real temp))
+      ^~~~~~~~~~~
+./utils/townsend_cooling_max.h:209:6: note: previous definition of ‘cooling_ctr’ was here
+ void cooling_ctr(Real townsend(Real temp, Real rho, Real const dt, Real Lambda_fac))
+      ^~~~~~~~~~~
+./utils/townsend_cooling_max.h: In function ‘cooling_ctr’:
+./utils/townsend_cooling_max.h:300:7: error: ‘temp’ undeclared (first use in this function); did you mean ‘bcmp’?
+   if((temp < cool_t(0)) || (temp > cool_t(nbins - 1)))
+       ^~~~
+       bcmp
+./utils/townsend_cooling_max.h:300:43: error: ‘nbins’ undeclared (first use in this function)
+   if((temp < cool_t(0)) || (temp > cool_t(nbins - 1)))
+                                           ^~~~~
+./utils/townsend_cooling_max.h:301:13: warning: ‘return’ with a value, in function returning void
+      return NAN;
+             ^~~
+./utils/townsend_cooling_max.h:292:6: note: declared here
+ void cooling_ctr(Real Lambda(Real temp))
+      ^~~~~~~~~~~
+./utils/townsend_cooling_max.h:316:10: warning: ‘return’ with a value, in function returning void
+   return coef * pow(temp / t_i, slope);
+          ^~~~
+./utils/townsend_cooling_max.h:292:6: note: declared here
+ void cooling_ctr(Real Lambda(Real temp))
+      ^~~~~~~~~~~
+./utils/townsend_cooling_max.h: In function ‘coolin_ctr’:
+./utils/townsend_cooling_max.h:330:7: error: ‘temp’ undeclared (first use in this function); did you mean ‘bcmp’?
+   if((temp < cool_t(0)) || (temp > cool_t(nbins - 1)))
+       ^~~~
+       bcmp
+./utils/townsend_cooling_max.h:330:43: error: ‘nbins’ undeclared (first use in this function)
+   if((temp < cool_t(0)) || (temp > cool_t(nbins - 1)))
+                                           ^~~~~
+./utils/townsend_cooling_max.h:331:13: warning: ‘return’ with a value, in function returning void
+      return NAN;
+             ^~~
+./utils/townsend_cooling_max.h:324:6: note: declared here
+ void coolin_ctr(Real tcool(Real temp, Real rho))
+      ^~~~~~~~~~
+./utils/townsend_cooling_max.h:333:12: error: ‘Cooling’ undeclared (first use in this function); did you mean ‘cooling’?
+   Real L = Cooling::Lambda(temp);
+            ^~~~~~~
+            cooling
+./utils/townsend_cooling_max.h:333:19: error: expected ‘,’ or ‘;’ before ‘:’ token
+   Real L = Cooling::Lambda(temp);
+                   ^
+./utils/townsend_cooling_max.h:339:18: error: ‘const_factor’ undeclared (first use in this function)
+   return temp / (const_factor * rho * L);
+                  ^~~~~~~~~~~~
+./utils/townsend_cooling_max.h:339:33: error: ‘rho’ undeclared (first use in this function)
+   return temp / (const_factor * rho * L);
+                                 ^~~
+./utils/townsend_cooling_max.h:339:10: warning: ‘return’ with a value, in function returning void
+   return temp / (const_factor * rho * L);
+          ^~~~
+./utils/townsend_cooling_max.h:324:6: note: declared here
+ void coolin_ctr(Real tcool(Real temp, Real rho))
+      ^~~~~~~~~~
+In file included from ./utils/hst_func.h:11:0,
+                 from mixlayershift.c:23:
+./utils/../ath_array.c: At top level:
+./utils/../ath_array.c:36:7: error: redefinition of ‘calloc_1d_array’
+ void* calloc_1d_array(size_t nc, size_t size)
+       ^~~~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:36:7: note: previous definition of ‘calloc_1d_array’ was here
+ void* calloc_1d_array(size_t nc, size_t size)
+       ^~~~~~~~~~~~~~~
+In file included from ./utils/hst_func.h:11:0,
+                 from mixlayershift.c:23:
+./utils/../ath_array.c:51:8: error: redefinition of ‘calloc_2d_array’
+ void** calloc_2d_array(size_t nr, size_t nc, size_t size)
+        ^~~~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:51:8: note: previous definition of ‘calloc_2d_array’ was here
+ void** calloc_2d_array(size_t nr, size_t nc, size_t size)
+        ^~~~~~~~~~~~~~~
+In file included from ./utils/hst_func.h:11:0,
+                 from mixlayershift.c:23:
+./utils/../ath_array.c:78:9: error: redefinition of ‘calloc_3d_array’
+ void*** calloc_3d_array(size_t nt, size_t nr, size_t nc, size_t size)
+         ^~~~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:78:9: note: previous definition of ‘calloc_3d_array’ was here
+ void*** calloc_3d_array(size_t nt, size_t nr, size_t nc, size_t size)
+         ^~~~~~~~~~~~~~~
+In file included from ./utils/hst_func.h:11:0,
+                 from mixlayershift.c:23:
+./utils/../ath_array.c:125:6: error: redefinition of ‘free_1d_array’
+ void free_1d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:125:6: note: previous definition of ‘free_1d_array’ was here
+ void free_1d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from ./utils/hst_func.h:11:0,
+                 from mixlayershift.c:23:
+./utils/../ath_array.c:133:6: error: redefinition of ‘free_2d_array’
+ void free_2d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:133:6: note: previous definition of ‘free_2d_array’ was here
+ void free_2d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from ./utils/hst_func.h:11:0,
+                 from mixlayershift.c:23:
+./utils/../ath_array.c:144:6: error: redefinition of ‘free_3d_array’
+ void free_3d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:144:6: note: previous definition of ‘free_3d_array’ was here
+ void free_3d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from ./utils/code_units.h:11:0,
+                 from ./utils/hst_func.h:12,
+                 from mixlayershift.c:23:
+./utils/../ath_array.c:36:7: error: redefinition of ‘calloc_1d_array’
+ void* calloc_1d_array(size_t nc, size_t size)
+       ^~~~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:36:7: note: previous definition of ‘calloc_1d_array’ was here
+ void* calloc_1d_array(size_t nc, size_t size)
+       ^~~~~~~~~~~~~~~
+In file included from ./utils/code_units.h:11:0,
+                 from ./utils/hst_func.h:12,
+                 from mixlayershift.c:23:
+./utils/../ath_array.c:51:8: error: redefinition of ‘calloc_2d_array’
+ void** calloc_2d_array(size_t nr, size_t nc, size_t size)
+        ^~~~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:51:8: note: previous definition of ‘calloc_2d_array’ was here
+ void** calloc_2d_array(size_t nr, size_t nc, size_t size)
+        ^~~~~~~~~~~~~~~
+In file included from ./utils/code_units.h:11:0,
+                 from ./utils/hst_func.h:12,
+                 from mixlayershift.c:23:
+./utils/../ath_array.c:78:9: error: redefinition of ‘calloc_3d_array’
+ void*** calloc_3d_array(size_t nt, size_t nr, size_t nc, size_t size)
+         ^~~~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:78:9: note: previous definition of ‘calloc_3d_array’ was here
+ void*** calloc_3d_array(size_t nt, size_t nr, size_t nc, size_t size)
+         ^~~~~~~~~~~~~~~
+In file included from ./utils/code_units.h:11:0,
+                 from ./utils/hst_func.h:12,
+                 from mixlayershift.c:23:
+./utils/../ath_array.c:125:6: error: redefinition of ‘free_1d_array’
+ void free_1d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:125:6: note: previous definition of ‘free_1d_array’ was here
+ void free_1d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from ./utils/code_units.h:11:0,
+                 from ./utils/hst_func.h:12,
+                 from mixlayershift.c:23:
+./utils/../ath_array.c:133:6: error: redefinition of ‘free_2d_array’
+ void free_2d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:133:6: note: previous definition of ‘free_2d_array’ was here
+ void free_2d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from ./utils/code_units.h:11:0,
+                 from ./utils/hst_func.h:12,
+                 from mixlayershift.c:23:
+./utils/../ath_array.c:144:6: error: redefinition of ‘free_3d_array’
+ void free_3d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from mixlayershift.c:6:0:
+./ath_array.c:144:6: note: previous definition of ‘free_3d_array’ was here
+ void free_3d_array(void *array)
+      ^~~~~~~~~~~~~
+In file included from ./utils/hst_func.h:12:0,
+                 from mixlayershift.c:23:
+./utils/code_units.h:18:33: error: initializer element is not constant
+ static const Real unit_length = CONST_pc*1e3; // 1 kpc
+                                 ^~~~~~~~
+./utils/code_units.h:19:33: error: initializer element is not constant
+ static const Real unit_time   = CONST_yr*1e6; // 1 Myr
+                                 ^~~~~~~~
+./utils/code_units.h:20:34: error: initializer element is not constant
+ static const Real unit_density = CONST_amu;   // 1 mp/cm-3
+                                  ^~~~~~~~~
+./utils/code_units.h:22:35: error: initializer element is not constant
+ static const Real unit_velocity = unit_length/unit_time; // in kpc/Myr
+                                   ^~~~~~~~~~~
+./utils/code_units.h:24:28: error: initializer element is not constant
+ static const Real unit_q = (unit_density * pow(unit_velocity,3.0))/unit_length;
+                            ^
+./utils/code_units.h:26:28: error: initializer element is not constant
+ static const Real KELVIN = unit_velocity*unit_velocity*CONST_amu/CONST_kB;
+                            ^~~~~~~~~~~~~
+./utils/code_units.h:32:17: error: initializer element is not constant
+ static Real X = Xsol * 0.7381;
+                 ^~~~
+./utils/code_units.h:33:17: error: initializer element is not constant
+ static Real Z = Zsol * 0.0134;
+                 ^~~~
+./utils/code_units.h:34:17: error: initializer element is not constant
+ static Real Y = 1 - X - Z;
+                 ^
+./utils/code_units.h:36:19: error: initializer element is not constant
+ static Real mu  = 1.0/(2.*X+ 3.*(1.-X-Z)/4.+ Z/2.);
+                   ^~~
+./utils/code_units.h:37:19: error: initializer element is not constant
+ static Real mue = 2.0/(1.0+X);
+                   ^~~
+./utils/code_units.h:38:19: error: initializer element is not constant
+ static Real muH = 1.0/X;
+                   ^~~
+./utils/code_units.h:47:25: error: initializer element is not constant
+ static Real T_cut     = T_cut_mul*T_hot_req;
+                         ^~~~~~~~~
+In file included from mixlayershift.c:23:0:
+./utils/hst_func.h:20:15: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ Real cold_gas(MeshBlock *pmb, int iout){
+               ^~~~~~~~~
+               Block
+./utils/hst_func.h:46:14: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ Real rho_sum(MeshBlock *pmb, int iout){
+              ^~~~~~~~~
+              Block
+./utils/hst_func.h:67:17: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ Real rho_sq_sum(MeshBlock *pmb, int iout){
+                 ^~~~~~~~~
+                 Block
+./utils/hst_func.h:87:14: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ Real c_s_sum(MeshBlock *pmb, int iout){
+              ^~~~~~~~~
+              Block
+./utils/hst_func.h:110:14: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ Real Pth_sum(MeshBlock *pmb, int iout){
+              ^~~~~~~~~
+              Block
+./utils/hst_func.h:134:13: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ Real PB_sum(MeshBlock *pmb, int iout){
+             ^~~~~~~~~
+             Block
+./utils/hst_func.h:172:13: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ Real Bx_sum(MeshBlock *pmb, int iout){
+             ^~~~~~~~~
+             Block
+./utils/hst_func.h:190:13: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ Real By_sum(MeshBlock *pmb, int iout){
+             ^~~~~~~~~
+             Block
+./utils/hst_func.h:208:13: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ Real Bz_sum(MeshBlock *pmb, int iout){
+             ^~~~~~~~~
+             Block
+mixlayershift.c: In function ‘make_unique_int’:
+mixlayershift.c:46:6: warning: type of ‘T’ defaults to ‘int’ [-Wimplicit-int]
+ int* make_unique_int(T){
+      ^~~~~~~~~~~~~~~
+mixlayershift.c:48:4: error: ‘ptr’ undeclared (first use in this function)
+   *ptr=T;
+    ^~~
+mixlayershift.c:50:1: error: expected ‘;’ before ‘}’ token
+ }
+ ^
+mixlayershift.c: At top level:
+mixlayershift.c:51:6: error: redefinition of ‘make_unique_int’
+ int* make_unique_int(Cooling){
+      ^~~~~~~~~~~~~~~
+mixlayershift.c:46:6: note: previous definition of ‘make_unique_int’ was here
+ int* make_unique_int(T){
+      ^~~~~~~~~~~~~~~
+mixlayershift.c: In function ‘make_unique_int’:
+mixlayershift.c:51:6: warning: type of ‘Cooling’ defaults to ‘int’ [-Wimplicit-int]
+ int* make_unique_int(Cooling){
+      ^~~~~~~~~~~~~~~
+mixlayershift.c:52:4: error: ‘ptr’ undeclared (first use in this function)
+   *ptr=Cooling;
+    ^~~
+mixlayershift.c:54:1: error: expected ‘;’ before ‘}’ token
+ }
+ ^
+mixlayershift.c: At top level:
+mixlayershift.c:61:14: error: unknown type name ‘string’; did you mean ‘stdin’?
+ void myprint(string msg);
+              ^~~~~~
+              stdin
+mixlayershift.c:118:18: error: unknown type name ‘ParameterInput’
+ void read_input (ParameterInput *pin){
+                  ^~~~~~~~~~~~~~
+mixlayershift.c:185:23: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ void townsend_cooling(MeshBlock *pmb, const Real time, const Real dt,
+                       ^~~~~~~~~
+                       Block
+mixlayershift.c:186:20: warning: type defaults to ‘int’ in declaration of ‘AthenaArray’ [-Wimplicit-int]
+              const AthenaArray<Real> &prim, const AthenaArray<Real> &prim_scalar,
+                    ^~~~~~~~~~~
+mixlayershift.c:186:31: error: expected ‘;’, ‘,’ or ‘)’ before ‘<’ token
+              const AthenaArray<Real> &prim, const AthenaArray<Real> &prim_scalar,
+                               ^
+mixlayershift.c:316:18: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ void frame_shift(MeshBlock *pmb, const Real time, const Real dt,
+                  ^~~~~~~~~
+                  Block
+mixlayershift.c:317:20: warning: type defaults to ‘int’ in declaration of ‘AthenaArray’ [-Wimplicit-int]
+              const AthenaArray<Real> &prim, const AthenaArray<Real> &prim_scalar,
+                    ^~~~~~~~~~~
+mixlayershift.c:317:31: error: expected ‘;’, ‘,’ or ‘)’ before ‘<’ token
+              const AthenaArray<Real> &prim, const AthenaArray<Real> &prim_scalar,
+                               ^
+mixlayershift.c:493:24: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ Real hst_total_cooling(MeshBlock *pmb, int iout) {
+                        ^~~~~~~~~
+                        Block
+mixlayershift.c:500:25: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ Real hst_front_velocity(MeshBlock *pmb, int iout) {
+                         ^~~~~~~~~
+                         Block
+mixlayershift.c:507:16: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ Real hst_debug(MeshBlock *pmb, int iout) {
+                ^~~~~~~~~
+                Block
+mixlayershift.c:514:13: error: unknown type name ‘MeshBlock’; did you mean ‘Block’?
+ void Source(MeshBlock *pmb, const Real time, const Real dt,
+             ^~~~~~~~~
+             Block
+mixlayershift.c:515:20: warning: type defaults to ‘int’ in declaration of ‘AthenaArray’ [-Wimplicit-int]
+              const AthenaArray<Real> &prim, const AthenaArray<Real> &prim_scalar,
+                    ^~~~~~~~~~~
+mixlayershift.c:515:31: error: expected ‘;’, ‘,’ or ‘)’ before ‘<’ token
+              const AthenaArray<Real> &prim, const AthenaArray<Real> &prim_scalar,
+                               ^
+mixlayershift.c:562:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ void Mesh::InitUserMeshData(ParameterInput *pin) {
+          ^
+mixlayershift.c:621:15: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ void MeshBlock::ProblemGenerator(ParameterInput *pin) {
+               ^
+mixlayershift.c:751:15: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ void MeshBlock::InitUserMeshBlockData(ParameterInput *pin){
+               ^
+mixlayershift.c:756:15: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ void MeshBlock::UserWorkBeforeOutput(ParameterInput *pin){
+               ^
+mixlayershift.c:807:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ void Mesh::UserWorkAfterLoop(ParameterInput *pin) {
+          ^
+In file included from ./prototypes.h:8:0,
+                 from ./ath_array.c:31,
+                 from mixlayershift.c:6:
+mixlayershift.c:812:14: error: expected declaration specifiers or ‘...’ before ‘stdin’
+ void myprint(stdin msg) {
+              ^
+make[1]: *** [Makefile:124: mixlayershift.o] Error 1
+make: *** [Makefile:51: compile] Error 2
