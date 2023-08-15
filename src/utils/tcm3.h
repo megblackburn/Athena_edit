@@ -10,7 +10,8 @@
 #include "../defs.h"
 #include <stdbool.h>
 #include <float.h>
-#define NBINS = 40
+//#define NBINS = 40 - not needed
+
 double g;
 int nbins;
 double const_factor;
