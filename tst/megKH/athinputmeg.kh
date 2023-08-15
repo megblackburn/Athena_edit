@@ -100,10 +100,10 @@ knx_KH = 1.0
 kny_KH = 1.0
 amp_KH = 0.01
 
-T_floor = 40000
-T_ceil = 100000000
-T_hot = 4000000
-T_cold = 80000
+T_floor = 40000.0
+T_ceil = 100000000.0
+T_hot = 4000000.0
+T_cold = 80000.0
 T_cut_mul = 0.5
  
 Xsol = 1.0
