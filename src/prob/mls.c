@@ -167,7 +167,7 @@ void read_input(DomainS *pDomain){
 
   return;
 }
-// double check equation for Temperature - different to FLASH and Athena++ currently
+
 void townsend_cooling(DomainS *pDomain)
 {
   GridS *pGrid = pDomain->Grid;
@@ -201,9 +201,8 @@ void townsend_cooling(DomainS *pDomain)
 	  if (isnan(temp)){
 	    printf("temp \n",temp);
 	    printf("rho \n", rho);
-
-        // Kinetic energy Calculation Needs checked - currently matches c++ version with 0.5mrho
-	    //Real E_kin = (Kbolts * temp * rho) / ((gamma-1.0)*mue*muH);
+	    
+	    //Real E_kin = (Kbolts * temp * rho) / ((gamma-1.0)*mp*mh);
 	    Real E_kin = 0.5 * (SQR(pGrid->U[k][j][i].M1)+SQR(pGrid->U[k][j][i].M2)+SQR(pGrid->U[k][j][i].M3))* pGrid->U[k][j][i].d;
 	    Real E_mag = 0.0;
 	    
@@ -219,9 +218,7 @@ void townsend_cooling(DomainS *pDomain)
 	      Real rho_cgs = rho * unit_density; // NEED CODE_UNITS
 	      Real dt_cgs = dt *unit_time;
 	      Real cLfac = Lambda_fac;
-		    
-	      // Temperature calculation needs checked!!!
-		    
+//////////////// DEFINE TOWNSEND!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 	      Real temp_new = fmax(Cooling_townsend(temp_cgs,rho_cgs,dt_cgs,cLfac), T_floor);
 	      if (isnan(temp_new)) {
 		printf("temp \n", temp_cgs);
@@ -428,8 +425,6 @@ void problem_write_restart(MeshS *pM, FILE *fp)
 //{
  // return pG->U[k][j][i].s[0]/pG->U[k][j][i].d;
 ////}
-
-// this function is previously defined to not allow an output - check if needed
 
 void Userwork_in_loop(DomainS *pD)
 {
