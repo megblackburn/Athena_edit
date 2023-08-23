@@ -342,11 +342,6 @@ void problem(DomainS *pDomain)
   GridS *pGrid = pDomain->Grid;
   
   read_input(pDomain);
-  printf("Line 343\n");
-  townsend_cooling(pDomain);
-  printf("townsend cooling finished.\n");
-  frame_shift(pDomain);
-  printf("frame shift done.\n");
  
   Real cloud_chi = T_hot/T_floor;
   Real rho_cold = amb_rho * cloud_chi;
