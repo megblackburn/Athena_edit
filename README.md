@@ -1,22 +1,17 @@
 # Athena_edit
 Edited Athena directory with added problem for turbulent mixing layer.
 
-New files:
+## New files:
 - all files in utils
-- mls2.c is current working problem
-- tcm3.c is the current townsend cooling function
-- current input is tst/megKH/athinputmeg.kh
+- mls2.c = current working problem, mix_layer_kh.c = more specific problem (unfinished)
+- tcm3.c = current townsend cooling function
+- current input = tst/megKH/athinputmeg.kh
 
-
-Work needed:
-
+## Work needed:
 - Temperature and energy equations need double checked
-- definitions of U[k][j][i]. need checked
-- upper and lower densities need added and assigned to U[k][j][i].d for different requirements - along with temperatures 
 - check pressure calculation
-- problem needs refined to specific TML requirements
-- set correct variables values
+- set correct variable values
 
-work done:
+## Work done:
 - error with the MPIallreduce within the frame_shift function - fixed with adding #include <mpi.h>
 
