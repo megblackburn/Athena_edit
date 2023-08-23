@@ -301,20 +301,138 @@ void frame_shift(DomainS *pDomain) {
 	  pGrid->U[k][j][i].M3 += pGrid->U[k][j][i].d*v_shift_t_new;
 	  Real dE_kin = pow(velz+v_shift_t_new,2)- pow(velz,2);
 	  pGrid->U[k][j][i].E += 0.5 * pGrid->U[k][j][i].d * dE_kin;
-	      }
+	}
       } 
     }
   }
 }
 
+void problem(DomainsS *pDomain)
+{
+  GridS *pGrid = pDomain->Grid;
 
+// gets input parameters from the input file
+  read_input(pDomain);
 
+// parameter definitions
+  Real cloud_chi = T_hot/T_floor;
+  Real rho_cold = amb_rho * cloud_chi;
 
+  Real A_KH = amp_KH * v_shear;
+  Real k_x = 2*PI*knx_KH/L1;
+  Real k_y = 2*PI*kny_KH/L2;
+  
+  Real x1,x2,x3;
+  Real x1f,x2f,x3f;
 
+  int i=0,j=0,k=0;
+  int is,ie,js,je,ks,ke;
 
+  is = pGrid->is; ie = pGrid->ie;
+  js = pGrid->js; je = pGrid->je;
+  ks = pGrid->ks; ke = pGrid->ke;
+// start of problem
+  for (k=ks; k<=ke; k++) {
+    for (j=js; j<=je; j++) {
+      for (i=is; i<=ie; i++) {
+	cc_pos(pGrid,i,j,k,&x1,&x2,&x3);
+	if (fabs(x2) < (L1/2)){
+	  pGrid->U[k][j][i].d = rho_cold + (0.5*(amb_rho - rho_cold)) * (1 + tanh(x3/front_thick));
+	  pGrid->U[k][j][i].M1 = pGrid->U[k][j][i].d * (v_shear/2) * (1 + tanh(x3/front_thick));
+	  pGrid->U[k][j][i].M2 = 0.0;
+	  pGrid->U[k][j][i].M3 = pGrid->U[k][j][i].d * A_KH * exp(-1.0*x3*x3/front_thick/front_thick)*sin(k_x*x1) * sin(k_y*x2);
+	  pGrid->U[k][j][i].M3 += pGrid->U[k][j][i].d * v_shift0;
+	}
+	if (fabs(x2) > (L1/2)) {
+	  pGrid->U[k][j][i].d = rho_hot + (0.5*(amb_rho - rho_hot)) * (1 + tanh(x3/front_thick));
+	  pGrid->U[k][j][i].M1 = pGrid->U[k][j][i].d * (v_shear/2) * (1 + tanh(x3/front_thick));
+	  pGrid->U[k][j][i].M2 = 0.0;
+	  pGrid->U[k][j][i].M3 = pGrid->U[k][j][i].d * A_KH * exp(-1.0*x3*x3/front_thick/front_thick)*sin(k_x*x1) * sin(k_y*x2);
+	  pGrid->U[k][j][i].M3 += pGrid->U[k][j][i].d * v_shift0;
+	}
+#ifndef BAROTROPIC
+	pGrid->U[k][j][i].E = pGrid->U[k][j][i].M1 * pGrid->U[k][j][i].M1;
+	pGrid->U[k][j][i].E += pGrid->U[k][j][i].M2 * pGrid->U[k][j][i].M2;
+	pGrid->U[k][j][i].E += pGrid->U[k][j][i].M3 * pGrid->U[k][j][i].M3;
+	pGrid->U[k][j][i].E /= 2.0*pGrid->U[k][j][i].d;
+	pGrid->U[k][j][i].E += (T_hot/(Kboltz*mu))*amb_rho/(g-1);
+#endif
+#if (NSCALARS > 0)
+        pGrid->U[k][j][i].s[0] = 0.0;
+        if (x2 > 0) pGrid->U[k][j][i].s[0] = 1.0;
+#endif
+      }
+    }
+  }
+#ifdef MHD
+  for (k=ks; k<=ke; k++) {
+    for (j=js; j<=je; j++) {
+      for (i=is; i<=ie+1; i++) {
+	pGrid->B1i[k][j][i] = B_x;
+      }
+    }
+  }
+  for (k=ks; k<=ke; k++) {
+    for (j=js; j<=je+1; j++) {
+      for (i=is; i<=ie; i++) {
+        pGrid->B2i[k][j][i] = B_y;
+      }
+    }
+  }
+  for (k=ks; k<=ke+1; k++) {
+    for (j=js; j<=je; j++) {
+      for (i=is; i<=ie; i++) {
+        pGrid->B3i[k][j][i] = B_z;
+      }
+    }
+  }
+#ifndef BAROTROPIC
+  for (k=ks; k<=ke; k++) {
+    for (j=js; j<=je; j++) {
+      for (i=is; i<=ie; i++) {
+        pGrid->U[k][j][i].E += 0.5*(SQR(B_x)+SQR(B_y)+SQR(B_z));
+      }
+    }
+  }
+#endif   
+#endif
+}
 
+void problem_write_restart(MeshS *pM, FILE *fp)
+{
+  return;
+}
 
+//static Real color(const GridS *pG, const int i, const int j, const int k)
+//{
+ // return pG->U[k][j][i].s[0]/pG->U[k][j][i].d;
+////}
+void problem_read_restart(MeshS *pM, FILE *fp)
+{
+  return;
+}
 
+ConsFun_t get_usr_expr(const char *expr)
+{
+#if (NSCALARS > 0)
+  if(strcmp(expr,"color")==0) return color;
+#endif
+  return NULL;
+}
+
+VOutFun_t get_usr_out_fun(const char *name){
+  return NULL;
+}
+
+void Userwork_in_loop(DomainS *pD)
+{
+  return;
+}
+
+void Userwork_after_loop(MeshS *pM)
+{
+  return;
+}
 
 
             
