@@ -63,12 +63,13 @@ Real debug_hst = 0.0;
 
 // velocities
 Real velx;
-Real vely;
-Real velz;
+//Real vely;
+//Real velz;
 
 // initial densities in cold and hot layers
-Real rho_cold;
-Real rho_hot;
+//Real rho_cold;
+//Real rho_hot;
+Real rho;
 
 // C_p/C_v
 Real g; //gamma
@@ -94,7 +95,7 @@ void read_input(Domain *pDomain){
   shift_start = par_getd("problem", "shift_start");
   v_shift0 = par_getd("problem", "v_shift");
   amb_rho = par_getd("problem", "amb_rho");
-  v_shear = par_getd("problem", "v_shear"); 
+ // v_shear = par_getd("problem", "v_shear"); 
   DEBUG_FLAG_MIX = par_geti("problem", "DEBUG_FLAG");
 
 #ifdef MHD
@@ -123,14 +124,14 @@ void read_input(Domain *pDomain){
   rho_cold = par_getd("problem", "rho_cold");
 
   velx = par_getd("problem", "velx");
-  vely = par_getd("problem", "vely");
-  velz = par_getd("problem", "velz");
+  //vely = par_getd("problem", "vely");
+  //velz = par_getd("problem", "velz");
   
   g = par_getd("problem", "gamma");
 
   // scaling factors
   a = par_getd("problem", "a");
-  sigma = par_getd("problem", "sigma")
+  sigma = par_getd("problem", "sigma");
   printf("input file read! \n");
 
   return;
@@ -156,16 +157,18 @@ void townsend_cooling(DomainS *pDomain)
       for (k=ks; k<=ke; k++) {
         cc_pos(pGrid, i, j, k, &x1, &x2, &x3);
         debug_hst +=1.0;
-        pGrid->U[k][j][i].d = rho_hot;
+	rho = rho_hot * rho_scale;
+        pGrid->U[k][j][i].d = rho_hot * rho_scale;
         temp = T_hot;
-        pGrid->U[k][j][i].M1 = v_shear * tan(x2/a); // v_x
-        pGrid->U[k][j][i].M2 = amb_rho*sin(2.0*PI*x1)*exp(-(x2*x2)/(sigma*sigma)); //v_y
+        pGrid->U[k][j][i].M1 = velx * tan(x2/a); // v_x
+        pGrid->U[k][j][i].M2 = velx * amb_rho*sin(2.0*PI*x1)*exp(-(x2*x2)/(sigma*sigma)); //v_y
         pGrid->U[k][j][i].M3 = velx;
           
         if (fabs(x2) < (L1/2)) {   
-          pGrid->U[k][j][i].d = rho_cold;
+	  rho = rho_cold * rho_scale;
+          pGrid->U[k][j][i].d = rho_cold *rho_scale;
           temp = T_cold;
-          pGrid->U[k][j][i].M1 = -rho_cold * v_shear * tan(x2/a); // v_x
+          pGrid->U[k][j][i].M1 = -rho_cold * velx * tan(x2/a); // v_x
           pGrid->U[k][j][i].M2 = rho_cold * amb_rho*sin(2.0*PI*x1)*exp(-(x2*x2)/(sigma*sigma)); //v_y
         }
           
@@ -173,7 +176,7 @@ void townsend_cooling(DomainS *pDomain)
           printf("temp\n", temp);
           printf("rho\n", rho);
 
-          Real E_kin = 0.5 * (SQR(pGrid->U[k][j][i].M1)+SQR(pGrid->U[k][j][i].M2)+SQR(pGrid->U[k][j][i].M3)*pGrid->U[k][j][i].d;
+          Real E_kin = 0.5 * (SQR(pGrid->U[k][j][i].M1)+SQR(pGrid->U[k][j][i].M2)+SQR(pGrid->U[k][j][i].M3)*pGrid->U[k][j][i].d);
           Real E_mag = 0.0;
 #ifdef MHD
           E_mag = 0.5 * SQR(B_x)+SQR(B_y)+SQR(B_z);
@@ -219,8 +222,8 @@ void townsend_cooling(DomainS *pDomain)
 void frame_shift(DomainS *pDomain) { 
   GridS *pGrid = pDomain->Grid;
 
-  print("frame shift initiated\n");
-
+  printf("frame shift initiated\n");
+  Real time, dt, g;
   if (time_last==time) {
     return;
   }
@@ -228,7 +231,6 @@ void frame_shift(DomainS *pDomain) {
     time_last = time;
   }
 
-  Real time, dt, g;
 
   Real local_cold_mass = 0.0;
   Real global_cold_mass = 0.0;
@@ -266,7 +268,7 @@ void frame_shift(DomainS *pDomain) {
         if (temp <=T_cold){
           local_cold_mass += rho * dvol;
 	      }
-	      local_v3_sum += velz;
+	      local_v3_sum += velx;
       }
     }
   }
@@ -299,7 +301,7 @@ void frame_shift(DomainS *pDomain) {
       for (j=js; j<=je; j++) {
         for (i=is; i<=ie; i++) {
 	  pGrid->U[k][j][i].M3 += pGrid->U[k][j][i].d*v_shift_t_new;
-	  Real dE_kin = pow(velz+v_shift_t_new,2)- pow(velz,2);
+	  Real dE_kin = pow(velx+v_shift_t_new,2)- pow(velx,2);
 	  pGrid->U[k][j][i].E += 0.5 * pGrid->U[k][j][i].d * dE_kin;
 	}
       } 
@@ -318,7 +320,7 @@ void problem(DomainsS *pDomain)
   Real cloud_chi = T_hot/T_floor;
   Real rho_cold = amb_rho * cloud_chi;
 
-  Real A_KH = amp_KH * v_shear;
+  Real A_KH = amp_KH * velx;
   Real k_x = 2*PI*knx_KH/L1;
   Real k_y = 2*PI*kny_KH/L2;
   
@@ -338,14 +340,14 @@ void problem(DomainsS *pDomain)
 	cc_pos(pGrid,i,j,k,&x1,&x2,&x3);
 	if (fabs(x2) < (L1/2)){
 	  pGrid->U[k][j][i].d = rho_cold + (0.5*(amb_rho - rho_cold)) * (1 + tanh(x3/front_thick));
-	  pGrid->U[k][j][i].M1 = pGrid->U[k][j][i].d * (v_shear/2) * (1 + tanh(x3/front_thick));
+	  pGrid->U[k][j][i].M1 = pGrid->U[k][j][i].d * (velx/2) * (1 + tanh(x3/front_thick));
 	  pGrid->U[k][j][i].M2 = 0.0;
 	  pGrid->U[k][j][i].M3 = pGrid->U[k][j][i].d * A_KH * exp(-1.0*x3*x3/front_thick/front_thick)*sin(k_x*x1) * sin(k_y*x2);
 	  pGrid->U[k][j][i].M3 += pGrid->U[k][j][i].d * v_shift0;
 	}
 	if (fabs(x2) > (L1/2)) {
 	  pGrid->U[k][j][i].d = rho_hot + (0.5*(amb_rho - rho_hot)) * (1 + tanh(x3/front_thick));
-	  pGrid->U[k][j][i].M1 = pGrid->U[k][j][i].d * (v_shear/2) * (1 + tanh(x3/front_thick));
+	  pGrid->U[k][j][i].M1 = pGrid->U[k][j][i].d * (velx/2) * (1 + tanh(x3/front_thick));
 	  pGrid->U[k][j][i].M2 = 0.0;
 	  pGrid->U[k][j][i].M3 = pGrid->U[k][j][i].d * A_KH * exp(-1.0*x3*x3/front_thick/front_thick)*sin(k_x*x1) * sin(k_y*x2);
 	  pGrid->U[k][j][i].M3 += pGrid->U[k][j][i].d * v_shift0;
