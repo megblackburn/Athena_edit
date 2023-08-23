@@ -1,5 +1,5 @@
 # Athena_edit
-Athena fork with new problem for turbulent mixing layer.
+Edited Athena directory with added problem for turbulent mixing layer.
 
 New files:
 - all files in utils
