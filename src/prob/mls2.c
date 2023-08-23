@@ -214,7 +214,7 @@ void townsend_cooling(DomainS *pDomain)
         }
         if (temp > T_floor) {
 	  if (temp<T_cut){
-	    Real rho = rho;
+	    Real rho = rho;  //rho_cgs???????????????????????
 	    Real temp_cgs = temp;
 	    Real rho_cgs = rho * unit_density; // NEED CODE_UNITS
             Real dt_cgs = dt *unit_time;
@@ -274,7 +274,7 @@ void frame_shift(DomainS *pDomain) {
   Real sim_dt = dt;
   
   g = par_getd("problem", "gamma");
-  Real c_s = sqrt(g * T_floor/(mu*Kboltz));
+ 
   Real c_s_cap = 100.0;
   int i=0, j=0, k=0;
   int is,ie,js,je,ks,ke,iprob;
@@ -346,7 +346,7 @@ void problem(DomainS *pDomain)
   Real cloud_chi = T_hot/T_floor;
   Real rho_cold = amb_rho * cloud_chi;
 
-  Real A_KH = amp_KH * v_shear; /////////////!!!!!!!!!!!!!!!!!!!!!111
+  Real A_KH = amp_KH * v_shear; /////////////!!!!!!!!!!!!!!!!!!!!!
   Real k_x = 2*PI*knx_KH/L1;
   Real k_y = 2*PI*kny_KH/L2;
   
